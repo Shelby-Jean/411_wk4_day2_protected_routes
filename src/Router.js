@@ -6,11 +6,10 @@ import About from './components/About'
 import Car from './components/Car'
 import Login from './components/Login'
 
-// Write checkAuth function here
-// Check the cookies for a cookie called "loggedIn"
+
 const checkAuth = () => {
     const cookies = cookie.parse(document.cookie);
-    return cookies["loggedinIn"] ? true : false;
+    return cookies["loggedIn"] ? true : false;
 }
 
 const ProtectedRoute = ({component: Component, ...rest}) => {
@@ -30,7 +29,7 @@ const Router = () => {
         <Switch>
             <Route path="/login" component={Login} />
             <ProtectedRoute exact path="/" component={Home} />
-            <ProtectedRoute ath="/about" component={About} />
+            <ProtectedRoute path="/about" component={About} />
             <ProtectedRoute path="/car/:id" component={Car} />
         </Switch>
     );
